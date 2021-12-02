@@ -1,0 +1,37 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/register.css' %}">
+
+<body>
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+      <h2 class="inactive underlineHover"><a href="{% url 'login' %}">Sign In</a></h2>
+      <h2 class="active"><a href="{% url 'register' %}">Register</a></h2>
+  
+      <!-- Icon -->
+      <div class="fadeIn first">
+        <img class="img_redct" src="{% static 'images/user.png'%}" id="icon" alt="User Icon" />
+      </div>
+      <form method="POST" class="formContent">  
+        {% csrf_token %}
+        <p>{{form.username.label}}</p>
+        <p>{{form.username}}</p>
+        <p>{{form.first_name.label}}</p>
+        <p>{{form.first_name}}</p>
+        <p>{{form.email.label}}</p>
+        <p>{{form.email}}</p>
+        <p>{{form.password1.label}}</p>
+        <p>{{form.password1}}</p>
+        <p>{{form.password2.label}}</p>
+        <p>{{form.password2}}</p>     
+      <input type="submit" name="Create User" class="fadeIn fourth">    
+      <span class="small alert-error">{{form.errors}}</span>
+    </form>
+  </div>
+  </div>
+</body>
+
+{% endblock content %}

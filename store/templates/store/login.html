@@ -1,0 +1,31 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="{%static 'css/register.css'%}">
+
+<body>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <h2 class="active"> Sign In </h2>
+    <h2 class="inactive underlineHover"><a href="{% url 'register' %}">Register</a></h2>
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img class="img_redct" src="{% static 'images/user.png'%}" id="icon" alt="User Icon" />
+    </div>   
+    <!-- Login Form -->
+    <form method="POST" class="formContent"> 
+      {% csrf_token %}
+       <p><input type="text" name="username" class="fadeIn second" placeholder="Username"></p> 
+      <p><input type="password" name="password" class="fadeIn third" placeholder="Password"></p>  
+      <input type="submit" class="fadeIn fourth" value="Log In">
+    </form>
+    {% for message in messages %}
+    <span id ="messages"class="small alert-sucess">{{message}}</span>
+    {% endfor %}
+  </div>
+</div>
+</body>
+
+{% endblock content %}
